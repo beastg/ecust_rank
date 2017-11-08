@@ -11,9 +11,7 @@ def index():
     users = list(map(list, users))
     for user in users:
         uid = user[0]
-        print(uid)
         user.append(db.get_record(uid))
-    print(users)
     return render_template('index.html', users = users)
 
 @app.route("/wyfsb", methods=['GET', 'POST'])
@@ -29,4 +27,5 @@ def register():
 def update():
     db.update_all()
 if __name__ == '__main__':
-	app.run()
+    update()
+    app.run(host='0.0.0.0', port=80)
