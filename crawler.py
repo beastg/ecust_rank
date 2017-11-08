@@ -1,8 +1,13 @@
 from bs4 import BeautifulSoup
 import requests
 def get_soup(username):
-    url = "https://vjudge.net/user/" + username
-    html = requests.get(url)
+    url = "https://cn.vjudge.net/user/" + username
+    try:
+        html = requests.get(url)
+    except:
+        print(url)
+        return False	
+    print(html)
     txt = html.text
     soup = BeautifulSoup(txt, 'lxml')
     return soup
@@ -19,6 +24,8 @@ def new_user(user):
     return True
 def query(username):
     soup = get_soup(username)
+    if not soup:
+        return False
     t = soup.find_all('a')
     ans = list()
     for e in t:
@@ -29,5 +36,4 @@ def query(username):
             pass
     return ans
 if __name__ == '__main__':
-    #test()
-    pass
+    query('yyecust')

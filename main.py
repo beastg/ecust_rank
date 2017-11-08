@@ -23,9 +23,6 @@ def register():
             return render_template('info.html', info='有问题')
     return render_template('register.html')
 
-@app.route("/yzylj", methods=['GET', 'POST'])
-def update():
-    db.update_all()
 if __name__ == '__main__':
-    update()
+#   update()
     app.run(host='0.0.0.0', port=80)
