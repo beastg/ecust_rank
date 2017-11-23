@@ -13,7 +13,9 @@ def index():
         uid = user[0]
         user.append(db.get_record(uid))
     return render_template('index.html', users = users)
-
+@app.route("/log")
+def log():
+    return render_template('log.html')
 @app.route("/wyfsb", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -25,4 +27,5 @@ def register():
 
 if __name__ == '__main__':
     db.update_all()
-    app.run()
+    #app.run()
+    app.run(host='0.0.0.0', port=80)

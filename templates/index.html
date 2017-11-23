@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <title>ECUST ACM 做题天梯</title>
 </head>
-<body>
+<body> 
     <h1>ECUST ACM 做题天梯</h1>
     <!-- <a href="/register">注册</a> -->
-    <table id="myTable2"  border="8">
+    <table id="myTable2"   class="pure-table">
         <tr>
             <th onclick="sortTable(0)">姓名</th>
             <th onclick="sortTable(1)">用户名</th>
@@ -35,7 +36,7 @@
         </tr>
         {% endfor %}
     </table>
-            
+          <p><a href="/log"> 更新信息 </a></p>  
             <script>
                 
             function sortTable(n) {
@@ -62,14 +63,16 @@
                   y = rows[i + 1].getElementsByTagName("TD")[n];
                   /* Check if the two rows should switch place,
                   based on the direction, asc or desc: */
+                  var xx = x.innerHTML.toLocaleLowerCase();
+                  var yy = y.innerHTML.toLocaleLowerCase();
                   if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    if (parseInt(xx) > parseInt(yy)) {
                       // If so, mark as a switch and break the loop:
                       shouldSwitch= true;
                       break;
                     }
                   } else if (dir == "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    if (parseInt(xx) < parseInt(yy)) {
                       // If so, mark as a switch and break the loop:
                       shouldSwitch= true;
                       break;
@@ -95,16 +98,6 @@
             }
             </script>
             <style>
-                table
-{
-border-collapse: collapse;
-border-spacing: 0px;
-}
-table, th, td
-{
-padding: 5px;
-border: 1px solid black;
-}
 th
 {
     cursor:pointer;

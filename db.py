@@ -1,4 +1,5 @@
 import sqlite3
+import time
 def get_all_users():
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
@@ -7,7 +8,7 @@ def get_all_users():
 def add_record(userid, res):
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
-    sql = "INSERT INTO crawler VALUES (NULL, {},{},{},{},{},{})".format(userid, res[0][1], res[1][1], res[2][1], res[3][1], res[4][1])
+    sql = "INSERT INTO crawler VALUES (NULL, {},{},{},{},{},{},{})".format(userid, res[0][1], res[1][1], res[2][1], res[3][1], res[4][1], int(time.time()))
     res = c.execute(sql)
    # c.execute()
     conn.commit()
@@ -36,7 +37,7 @@ def new_user(user):
     c = conn.cursor()
     c.execute(sql)
     conn.commit()
-    update_all()
+    #update_all()
     return True
 if __name__ == '__main__':
     update_all()
